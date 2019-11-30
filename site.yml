@@ -2,8 +2,7 @@
 - name: Install WordPress, MySQL, Nginx, and PHP-FPM
   hosts: all
   remote_user: "{{remote_user}}"
-  sudo: yes
-
+  become: yes
   roles:
     - common
     - ufw
@@ -17,4 +16,3 @@
     - backup
     - sftp
     - newrelic
-    - letsencrypt

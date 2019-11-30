@@ -9,6 +9,7 @@
       - python-pip
       - python-dev
       - build-essential
+      - letsencrypt
     state: latest
     update_cache: yes
 
