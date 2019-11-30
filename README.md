@@ -1,7 +1,7 @@
 # WordPress Ansible Playbook
 
-- Requires Ansible 1.2 or newer
-- Expects Ubuntu 14.04
+- Written for Ansible 2.5
+- Tested on Ubuntu 18.04
 
 This playbook deploys an optimized setup for WordPress using MariaDB, nginx, PHP FPM, and Memcached.
 

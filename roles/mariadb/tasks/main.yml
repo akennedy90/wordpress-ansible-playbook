@@ -1,10 +1,4 @@
 ---
-- name: Install MariaDB package key
-  apt_key: keyserver=keyserver.ubuntu.com id=0xcbcb082a1bb943db
-
-- name: Add MariaDB source 
-  apt_repository: repo='deb [arch=amd64,i386,ppc64el] http://mirror.klaus-uwe.me/mariadb/repo/10.1/ubuntu trusty main' state=present
-
 - name: Install MariaDB package
   apt: name={{item}} state=latest
   with_items:

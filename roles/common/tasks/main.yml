@@ -1,18 +1,16 @@
 ---
-- name: apt-get update hack
-  shell: apt-get update
-
 - name: Install utilities
-  apt: name={{item}} state=latest
-  ignore_errors: yes
-  with_items:
-    - vim
-    - git
-    - subversion
-    - unzip
-    - python-pip
-    - python-dev
-    - build-essential
+  apt: 
+    name:
+      - vim
+      - git
+      - subversion
+      - unzip
+      - python-pip
+      - python-dev
+      - build-essential
+    state: latest
+    update_cache: yes
 
 - name: Set timezone variables
   copy: content="{{ timezone }}"

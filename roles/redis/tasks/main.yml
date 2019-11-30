@@ -4,7 +4,7 @@
 
 - name: Install redis
   apt: name=redis-server state=latest
-  notify: rrestart redis
+  notify: restart redis
 
 - name: Copy redis.conf
   template: src=redis.conf dest=/etc/redis/redis.conf

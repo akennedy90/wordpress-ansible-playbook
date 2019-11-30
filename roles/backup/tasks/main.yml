@@ -1,7 +1,6 @@
 ---
 - name: Install awscli
   pip: name=awscli state=latest
-  sudo: yes
 
 - name: Create .aws dir under user home for awscli config
   file:

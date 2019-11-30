@@ -2,25 +2,32 @@
 - apt_repository: repo='ppa:ondrej/php' state=present
 
 - name: Install php-fpm
-  apt: name={{item}} state=latest
-  with_items:
-    - php7.0-fpm
-    - php7.0-mbstring
-    - php7.0-mysql
-    - php7.0-dev
-    - php7.0-mcrypt
-    - php7.0-curl
-    - imagemagick
-    - php7.0-imagick
-    - php7.0-gd
-    - php7.0-xmlrpc
+  apt: 
+    name: 
+      - php7.0-fpm
+      - php7.0-mbstring
+      - php7.0-mysql
+      - php7.0-dev
+      - php7.0-mcrypt
+      - php7.0-curl
+      - imagemagick
+      - php7.0-imagick
+      - php7.0-gd
+      - php7.0-xmlrpc
+      - pkg-config 
+      - libmongoc-1.0-0 
+      - php-xml
+      - php7.0-xml
+      - php-dev
+    state: latest
   notify:
     - stop php5-fpm
     - restart php7.0-fpm
 
 - name: Install xdebug (disabled)
-  shell: pecl install xdebug
-  ignore_errors: yes
+  pear: 
+    name: pecl/xdebug
+    state: present
 
 - name: Disable default pool
   command: mv /etc/php/7.0/fpm/pool.d/www.conf /etc/php/7.0/fpm/pool.d/www.disabled creates=/etc/php/7.0/fpm/pool.d/www.disabled
@@ -64,4 +71,4 @@
     path: /usr/local/bin/composer
     mode: a+x
     state: file
-    owner: {{remote_user}}
+    owner: '{{remote_user}}'
